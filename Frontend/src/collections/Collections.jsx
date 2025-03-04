@@ -2,10 +2,10 @@ import 'react'
 import Navbar from '../components/Navbar'
 import Collection from './../components/Collection';
 import Footer from '../components/Footer';
-import list from "../../public/list.json" 
+
 
 function Collections() {
-    console.log(list)
+    console.log()
   return (
     <div>
       <>

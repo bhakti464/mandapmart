@@ -1,12 +1,14 @@
 import "react";
 import PropTypes from "prop-types"; 
-import list from "../../public/list.json";
+import { useState, useEffect } from "react";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Cards from "./Cards";
 import Slider from "react-slick";
 import { motion } from "framer-motion";
 import { SlArrowLeft, SlArrowRight } from "react-icons/sl"; 
+import axios from "axios";
+
 const CustomPrevArrow = ({ onClick }) => (
   <motion.div
     className="absolute top-1/2 left-[-30px] z-10 cursor-pointer"
@@ -39,16 +41,31 @@ CustomNextArrow.propTypes = {
 };
 
 function Decor() {
-  const filterData = list.filter((data) => data.category === "free");
+  const [decor, setDecor] = useState([]);
+  useEffect(() => {
+    const getDecor = async () => {
+      try {
+        const res = await axios.get("http://localhost:4001/decor");
+        console.log(res.data);
+        setDecor(res.data.filter((data) => data.category === "free"));
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getDecor();
+  }, []);
 
+ 
   const settings = {
     dots: false,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 3,
-    nextArrow: <CustomNextArrow />,
-    prevArrow: <CustomPrevArrow />,
+    autoplay: true,  // Enable autoplay
+    autoplaySpeed: 3000, // Adjust speed (3 seconds)
+    nextArrow: <CustomNextArrow onClick={() => {}} />,
+    prevArrow: <CustomPrevArrow onClick={() => {}} />,
     responsive: [
       {
         breakpoint: 1024,
@@ -81,7 +98,7 @@ function Decor() {
 
       <div className="relative">
         <Slider {...settings}>
-          {filterData.map((item) => (
+          {decor.map((item) => (
             <Cards item={item} key={item.id} />
           ))}
         </Slider>
