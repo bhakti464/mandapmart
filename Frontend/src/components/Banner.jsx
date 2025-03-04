@@ -5,7 +5,7 @@ function Banner() {
     <> 
     <div className='max-w-screen-2x1 container mx-auto md:px-20 px-4 flex flex-col md:flex-row my-10'>
       {/*Left*/}
-        <div className='w-full order-2 md:order-1 md:w-1/2 mt-10 md:mt-32 '>
+        <div className='w-full order-2 md:order-1 md:w-1/2 mt-4 md:mt-20 '>
           <div className="space-y-8">
             <h1  className= "text-2xl md:text-4xl font-bold" >
             Hello, welcome to experience  
@@ -31,8 +31,8 @@ function Banner() {
           <button className="btn  mt-6 btn-secondary">Secondary</button>
         </div>
         {/*Right*/}
-        <div className='order-1 w-full mt-24 md:w-1/2'>  
-          <img src={banner} className="md:w-[550px] md:h-[460px] md:ml-12  mt-0 " alt=""></img>
+        <div className='order-1 w-full mt-5 md:w-1/2'>  
+          <img src={banner} className="md:w-[600px] md:h-[550px] md:ml-12  mt-0 " alt=""></img>
         </div>
     </div>
     </>

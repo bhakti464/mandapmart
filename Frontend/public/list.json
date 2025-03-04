@@ -1,11 +1,11 @@
 [
     {
         "id":1,
-        "name":"Bajot",
+        "name":"Bajottttttt",
         "title":"Traditional Wooden Bajot",
         "price":"500",
         "category":"free",
-        "description":"A beautifully handcrafted wooden bajot, perfect for pooja or decorative purposes.",
+        "description":"",
         "image":"bajoth.jpg"
     },
 
@@ -15,7 +15,7 @@
         "title":"Brass Pooja Diya",
         "price":"300",
         "category":"free",
-        "description":"Elegant brass diya, ideal for temple or home rituals, adding a traditional touch.",
+        "description":"",
         "image":"diya.jpg"
     },
 
@@ -25,7 +25,7 @@
         "title":"Artificial Flower Garland",
         "price":"700",
         "category":"free",
-        "description":"Beautiful artificial flower garland with white roses and green leaves for decoration.",
+        "description":"",
         "image":"flowers.jpg"
     },
 
@@ -35,7 +35,7 @@
         "title":"Ganpati Bappa Idol",
         "price":"1500",
         "category":"free",
-        "description":"A stunning idol of Lord Ganesha, perfect for home, office, or festive celebrations.",
+        "description":"",
         "image":"ganpati bappa.jpg"
     },
 
@@ -45,7 +45,7 @@
         "title":"Haldi Ceremony Thali",
         "price":"600",
         "category":"free",
-        "description":"A decorative haldi thali used in wedding ceremonies for rituals and blessings.",
+        "description":"",
         "image":"haldi thal.jpg"
     },
 
@@ -55,7 +55,7 @@
         "title":"Floral Hanging Ring",
         "price":"800",
         "category":"free",
-        "description":"A unique hanging ring decoration with artificial flowers, perfect for weddings and events.",
+        "description":"",
         "image":"hanging ring.jpg"
     },
 
@@ -65,7 +65,7 @@
         "title":"Lord Krishna Decorative Idol",
         "price":"1200",
         "category":"free",
-        "description":"A beautiful Krishna idol for home décor, spiritual settings, or festive occasions.",
+        "description":"",
         "image":"krishna.jpg"
     },
 
@@ -75,7 +75,7 @@
         "title":"Traditional Panihari Statue",
         "price":"900",
         "category":"free",
-        "description":"A classic Rajasthani panihari (water carrier) statue, adding cultural beauty to your space.",
+        "description":"",
         "image":"panihari.jpg"
     },
 
@@ -85,7 +85,7 @@
         "title":"Decorative Pillar Vase",
         "price":"1100",
         "category":"free",
-        "description":"A stylish and elegant pillar vase for home decoration, weddings, and events.",
+        "description":"",
         "image":"pilar vase.jpg"
     },
 
@@ -95,7 +95,7 @@
         "title":"Square Ring Holder for Engagement",
         "price":"1300",
         "category":"free",
-        "description":"A beautifully designed square ring stand, elegantly enhancing the event decor.",
+        "description":"",
         "image":"squre ring for enge.jpg"
     },
 
@@ -105,7 +105,7 @@
         "title":"Traditional Wooden Bajot",
         "price":"500",
         "category":"free",
-        "description":"A beautifully handcrafted wooden bajot, perfect for pooja or decorative purposes.",
+        "description":"",
         "image":"bajoth.jpg"
     },
 
@@ -115,7 +115,7 @@
         "title":"Traditional Wooden Bajot",
         "price":"500",
         "category":"free",
-        "description":"A beautifully handcrafted wooden bajot, perfect for pooja or decorative purposes.",
+        "description":"",
         "image":"bajoth.jpg"
     }
 ]

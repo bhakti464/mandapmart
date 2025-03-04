@@ -5,6 +5,8 @@ import { Route, Routes } from "react-router-dom";
 import Collections from './collections/Collections';
 import ScrollToTop from './components/ScrollToTop';
 import Signup from './components/Signup';
+import Abouts from './collections/Abouts';
+import Contacts from './collections/Contacts';
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/collection" element={<Collections />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/about" element={<Abouts />} />
+        <Route path="/contact" element={<Contacts />} />
+        
       </Routes>
       <ScrollToTop /></div>
     </>

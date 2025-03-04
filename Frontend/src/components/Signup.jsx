@@ -4,6 +4,7 @@ import Login from "./Login";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+
 function Signup() {
   const location = useLocation();
   const navigate = useNavigate();
@@ -37,91 +38,89 @@ function Signup() {
         }
       });
   };
+
   return (
     <>
-      <div className="flex h-screen items-center justify-center">
-        <div className=" w-[600px] dark:bg-gray-900 dark:text-white">
-          <div className="modal-box dark:bg-slate-800 dark:text-white">
-            <form onSubmit={handleSubmit(onSubmit)} method="dialog">
-              {/* if there is a button in form, it will close the modal */}
-              <Link
-                to="/"
-                className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
-              >
-                ✕
-              </Link>
+      {/* Background with Blur Effect */}
+      <div className="relative flex h-screen items-center justify-center bg-cover bg-center " 
+        style={{ backgroundImage: "url('/signup-bg.jpg')" }}>
+        
+        {/* Blurred Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur"></div>
 
-              <h3 className="font-bold text-lg">Signup</h3>
-              <div className="mt-4 space-y-2">
-                <span>Name</span>
-                <br />
-                <input
-                  type="text"
-                  placeholder="Enter your fullname"
-                  className="w-80 px-3 py-1 border rounded-md outline-none"
-                  {...register("fullname", { required: true })}
-                />
-                <br />
-                {errors.fullname && (
-                  <span className="text-sm text-red-500">
-                    This field is required
-                  </span>
-                )}
-              </div>
-              {/* Email */}
-              <div className="mt-4 space-y-2">
-                <span>Email</span>
-                <br />
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-80 px-3 py-1 border rounded-md outline-none"
-                  {...register("email", { required: true })}
-                />
-                <br />
-                {errors.email && (
-                  <span className="text-sm text-red-500">
-                    This field is required
-                  </span>
-                )}
-              </div>
-              {/* Password */}
-              <div className="mt-4 space-y-2">
-                <span>Password</span>
-                <br />
-                <input
-                  type="text"
-                  placeholder="Enter your password"
-                  className="w-80 px-3 py-1 border rounded-md outline-none"
-                  {...register("password", { required: true })}
-                />
-                <br />
-                {errors.password && (
-                  <span className="text-sm text-red-500">
-                    This field is required
-                  </span>
-                )}
-              </div>
-              {/* Button */}
-              <div className="flex justify-between items-center mt-4">
-                <button className="bg-pink-500 text-white rounded-md px-3 py-1 hover:bg-pink-700 duration-200">
-                  Signup
-                </button>
-                <p className="text-xl">
-                  Have account?{" "}
-                  <button
-                    className="underline text-blue-500 cursor-pointer"
-                    onClick={() =>
-                      document.getElementById("my_modal_3").showModal()
-                    }
-                  >
-                    Login
-                  </button>{" "}
-                  <Login />
-                </p>
-              </div>
-            </form>
-          </div>
+        {/* Signup Form Box */}
+        <div className="relative w-[400px] bg-white bg-opacity-90 p-6 rounded-lg shadow-lg dark:bg-gray-900 dark:text-white">
+          <form onSubmit={handleSubmit(onSubmit)} method="dialog">
+            <Link
+              to="/"
+              className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2"
+            >
+              ✕
+            </Link>
+
+            <h3 className="font-bold text-lg text-center">Signup</h3>
+
+            {/* Name Input */}
+            <div className="mt-4 ">
+              <label className="block">Name</label>
+              <input
+                type="text"
+                placeholder="Enter your fullname"
+                className="w-full px-3 py-2 border rounded-md outline-none dark:bg-gray-900 dark:text-white"
+                {...register("fullname", { required: true })}
+              />
+              {errors.fullname && (
+                <span className="text-sm text-red-500">This field is required</span>
+              )}
+            </div>
+
+            {/* Email Input */}
+            <div className="mt-4 dark:bg-gray-900 dark:text-white ">
+              <label className="block">Email</label>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full px-3 py-2 border rounded-md outline-none dark:bg-gray-900 dark:text-white"
+                {...register("email", { required: true })}
+              />
+              {errors.email && (
+                <span className="text-sm text-red-500">This field is required</span>
+              )}
+            </div>
+
+            {/* Password Input */}
+            <div className="mt-4">
+              <label className="block">Password</label>
+              <input
+                type="password"
+                placeholder="Enter your password"
+                className="w-full px-3 py-2 border rounded-md outline-none dark:bg-gray-900 dark:text-white"
+                {...register("password", { required: true })}
+              />
+              {errors.password && (
+                <span className="text-sm text-red-500">This field is required</span>
+              )}
+            </div>
+
+            {/* Signup Button */}
+            <div className="flex justify-between items-center mt-4">
+              <button className="w-full bg-pink-500 text-white rounded-md px-4 py-2 hover:bg-pink-700 duration-200">
+                Signup
+              </button>
+            </div>
+
+            {/* Login Link */}
+            <p className="text-center mt-3 text-sm">
+              Have an account?{" "}
+              <button
+                className="underline text-blue-500 cursor-pointer"
+                onClick={() => document.getElementById("my_modal_3").showModal()}
+              >
+                Login
+              </button>
+              <Login />
+            </p>
+          </form>
         </div>
       </div>
     </>

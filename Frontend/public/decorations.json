@@ -1,0 +1,55 @@
+[
+    {
+        "id":1,
+        "name":"Bajottttttt",
+        "title":"Traditional Wooden Bajot",
+        "price":"500",
+        "category":"free",
+        "description":"",
+        "image":"bajoth.jpg"
+    },
+
+    {
+        "id":2,
+        "name":"Diya",
+        "title":"Brass Pooja Diya",
+        "price":"300",
+        "category":"free",
+        "description":"",
+        "image":"diya.jpg"
+    },
+
+    {
+        "id":10,
+        "name":"Ring Stand",
+        "title":"Square Ring Holder for Engagement",
+        "price":"1300",
+        "category":"free",
+        "description":"",
+        "image":"squre ring for enge.jpg"
+    },
+
+    {
+        "id":11,
+        "name":"Bajot",
+        "title":"Traditional Wooden Bajot",
+        "price":"500",
+        "category":"free",
+        "description":"",
+        "image":"bajoth.jpg"
+    },
+
+    {
+        "id":12,
+        "name":"Bajot",
+        "title":"Traditional Wooden Bajot",
+        "price":"500",
+        "category":"free",
+        "description":"",
+        "image":"bajoth.jpg"
+    }
+]
+
+
+
+

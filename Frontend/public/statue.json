@@ -1,0 +1,41 @@
+[
+    {
+        "id":4,
+        "name":"Ganpati Bappa",
+        "title":"Ganpati Bappa Idol",
+        "price":"1500",
+        "category":"free",
+        "description":"",
+        "image":"ganpati bappa.jpg"
+    },
+
+    {
+        "id":7,
+        "name":"Lord Krishna",
+        "title":"Lord Krishna Decorative Idol",
+        "price":"1200",
+        "category":"free",
+        "description":"",
+        "image":"krishna.jpg"
+    },
+
+    {
+        "id":8,
+        "name":"Panihari Statue",
+        "title":"Traditional Panihari Statue",
+        "price":"900",
+        "category":"free",
+        "description":"",
+        "image":"panihari.jpg"
+    }
+
+
+   
+
+    
+
+]
+
+
+
+
