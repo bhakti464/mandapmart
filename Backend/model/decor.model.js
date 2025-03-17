@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const decorSchema=mongoose.Schema({
     name:String,
     price:Number,
-    categoty:String,
+    categoty:String, 
     image:String,
     title:String
 })

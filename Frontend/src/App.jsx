@@ -7,7 +7,9 @@ import ScrollToTop from './components/ScrollToTop';
 import Signup from './components/Signup';
 import Abouts from './collections/Abouts';
 import Contacts from './collections/Contacts';
-
+import { Toaster } from 'react-hot-toast';
+import { ToastContainer } from "react-toastify"; 
+import "react-toastify/dist/ReactToastify.css";
 function App() {
   return (
     <>
@@ -20,6 +22,8 @@ function App() {
         <Route path="/contact" element={<Contacts />} />
         
       </Routes>
+      <ToastContainer />
+      <Toaster />
       <ScrollToTop /></div>
     </>
   );

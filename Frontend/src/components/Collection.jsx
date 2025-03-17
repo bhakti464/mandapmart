@@ -1,28 +1,30 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Cards from "./Cards";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import axios from "axios";
+
+// Import JSON files
+import allData from "../data/collectionlist.json";
+import mandapsData from "../data/mandaps.json";
+import flowersData from "../data/flowers.json";
+import chairsData from "../data/chairs.json";
+import statueData from "../data/statue.json";
+import decorationsData from "../data/decorations.json";
 
 function Collection() {
-  const [decor, setDecor] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  useEffect(() => {
-    const fetchDecor = async () => {
-      try {
-        const res = await axios.get(
-          `http://localhost:4001/decor?category=${selectedCategory}`
-        );
-        console.log("Fetched Decor Data:", res.data);
-        setDecor(res.data);
-      } catch (error) {
-        console.error("Error fetching decor:", error);
-      }
-    };
+  // Map categories to their respective JSON data
+  const categoryData = {
+    All: allData,
+    Mandaps: mandapsData,
+    Flowers: flowersData,
+    Chairs: chairsData,
+    Statue: statueData,
+    Decorations: decorationsData,
+  };
 
-    fetchDecor();
-  }, [selectedCategory]); // ✅ Fetch when category changes
+  const decor = categoryData[selectedCategory] || [];
 
   return (
     <>
@@ -35,12 +37,12 @@ function Collection() {
           <p className="mt-6">
             Explore our exclusive collection of beautifully crafted mandaps, decorative items, and event essentials 
             designed to make every occasion grand and memorable.
-          </p>
+          </p> 
         </div>
 
         {/* Category Filter Buttons */}
         <div className="flex justify-center gap-4 mt-6 flex-wrap">
-          {["All", "Mandaps", "Flowers", "Chairs", "Statue", "Decorations"].map((category) => (
+          {Object.keys(categoryData).map((category) => (
             <button
               key={category}
               className={`px-4 py-2 rounded-md border ${
@@ -58,7 +60,7 @@ function Collection() {
           {decor.length > 0 ? (
             decor.map((item, index) => (
               <motion.div
-                key={item.id}
+                key={index}
                 initial={{ opacity: 0, translateY: 100 }}
                 whileInView={{ opacity: 1, translateY: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}

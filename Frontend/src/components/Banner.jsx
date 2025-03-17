@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
 
 const images = [
-  "/public/Banner.png",
-  "/public/Banner2.png",
-  "/public/Banner3.png",
-  "/public/Banner4.png",
-  "/public/Banner5.png"
+  "/Banner.png",
+  "/Banner4.png",
+  "/Banner3.png",
+  "/Banner2.png"
 ];
 
 function Banner() {
@@ -49,7 +48,7 @@ function Banner() {
         <div className='order-1 w-full mt-5 md:w-1/2'>
           <img 
             src={images[currentIndex]} 
-            className="md:w-[600px] md:h-[550px] md:ml-12 mt-0 transition-opacity duration-500" 
+            className="md:w-[550px] md:h-[550px] md:ml-12 mt-0 transition-opacity duration-500" 
             alt={`Banner ${currentIndex + 1}`} 
           />
         </div>
