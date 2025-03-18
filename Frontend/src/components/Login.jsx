@@ -1,10 +1,15 @@
 import "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom"; // ✅ Import useNavigate
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useAuth } from "../context/AuthProvider";
+
 function Login() {
-  const {
+  const navigate = useNavigate(); // ✅ Initialize navigate function
+  const [authUser, setAuthUser] = useAuth();
+
+  const { 
     register,
     handleSubmit,
     formState: { errors },
@@ -20,22 +25,31 @@ function Login() {
       .then((res) => {
         console.log(res.data);
         if (res.data) {
-          toast.success("Loggedin Successfully");
+          toast.success("Logged in Successfully");
+          
+          // ✅ Update auth state immediately
+          setAuthUser(res.data.user);
+
+          // ✅ Save user info in localStorage
+          localStorage.setItem("Users", JSON.stringify(res.data.user));
+
+          // ✅ Close modal before redirecting
           document.getElementById("my_modal_3").close();
+
+          // ✅ Redirect to Home Page
           setTimeout(() => {
-            window.location.reload();
-            localStorage.setItem("Users", JSON.stringify(res.data.user));
-          }, 1000);
+            navigate("/"); // ✅ Redirect to home page after login
+          }, 500);
         }
       })
       .catch((err) => {
         if (err.response) {
           console.log(err);
           toast.error("Error: " + err.response.data.message);
-          setTimeout(() => {}, 2000);
         }
       });
   };
+
   return (
     <div>
       <dialog id="my_modal_3" className="modal">

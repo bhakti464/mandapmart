@@ -1,6 +1,6 @@
 import "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import Login from "./Login";
+import { useAuth } from "../context/AuthProvider";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -8,6 +8,8 @@ import toast from "react-hot-toast";
 function Signup() {
   const location = useLocation();
   const navigate = useNavigate();
+  const [authUser, setAuthUser] = useAuth();
+
   const from = location.state?.from?.pathname || "/";
   const {
     register,
@@ -27,9 +29,18 @@ function Signup() {
         console.log(res.data);
         if (res.data) {
           toast.success("Signup Successfully");
+
+          setAuthUser(res.data.user);
+
           navigate(from, { replace: true });
         }
         localStorage.setItem("Users", JSON.stringify(res.data.user));
+      
+      // ✅ Redirect to Home Page
+      setTimeout(() => {
+        navigate("/"); // ✅ Redirect to home
+      }, 500);
+    
       })
       .catch((err) => {
         if (err.response) {
@@ -118,7 +129,7 @@ function Signup() {
               >
                 Login
               </button>
-              <Login />
+              
             </p>
           </form>
         </div>

@@ -10,12 +10,44 @@ const Contact = () => {
     message: "",
   });
 
+  const [errors, setErrors] = useState({}); //Store validation errors
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[0-9]{10}$/; //Ensures exactly 10 digits
+    return phoneRegex.test(phone);
+  };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+
+    //Validate fields on change
+    if (e.target.name === "email" && !validateEmail(e.target.value)) {
+      setErrors({ ...errors, email: "Invalid email format (e.g., user@example.com)" });
+    } else if (e.target.name === "phone" && !validatePhone(e.target.value)) {
+      setErrors({ ...errors, phone: "Phone number must be 10 digits" });
+    } else {
+      setErrors({ ...errors, [e.target.name]: "" }); //Remove error if valid
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    //Check validations before sending request
+    if (!validateEmail(formData.email)) {
+      setErrors({ ...errors, email: "Invalid email format (e.g., user@example.com)" });
+      return;
+    }
+
+    if (!validatePhone(formData.phone)) {
+      setErrors({ ...errors, phone: "Phone number must be 10 digits" });
+      return;
+    }
 
     try {
       const response = await fetch("http://localhost:4001/api/contact", {
@@ -41,11 +73,12 @@ const Contact = () => {
         phone: "",
         message: "",
       });
+
+      setErrors({}); //Clear errors after successful submission
     } catch (error) {
       toast.error(`${error.message}`, { position: "top-center" });
     }
   };
-
 
   return (
     <section className="w-full min-h-screen dark:bg-gray-900 flex items-center justify-center px-4">
@@ -71,7 +104,7 @@ const Contact = () => {
           <div className="bg-white p-6 md:col-span-2 dark:bg-gray-900 dark:text-white">
             <form onSubmit={handleSubmit} className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <div className="flex flex-col">
-                <label className="w-full text-gray-700 dark:text-gray-300 text-sm md:text-base mb-1">
+                <label className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-1">
                   First Name
                 </label>
                 <input
@@ -86,7 +119,7 @@ const Contact = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="w-full text-gray-700 dark:text-gray-300 text-sm md:text-base mb-1">
+                <label className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-1">
                   Last Name
                 </label>
                 <input
@@ -101,7 +134,7 @@ const Contact = () => {
               </div>
 
               <div className="flex flex-col">
-                <label className="w-full text-gray-700 dark:text-gray-300 text-sm md:text-base mb-1">
+                <label className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-1">
                   Email
                 </label>
                 <input
@@ -109,14 +142,17 @@ const Contact = () => {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full p-3 border rounded-md dark:bg-gray-900 text-gray-900 dark:text-white"
+                  className={`w-full p-3 border rounded-md dark:bg-gray-900 text-gray-900 dark:text-white ${
+                    errors.email ? "border-red-500" : ""
+                  }`}
                   placeholder="Your email"
                   required
                 />
+                {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
               </div>
 
               <div className="flex flex-col">
-                <label className="w-full text-gray-700 dark:text-gray-300 text-sm md:text-base mb-1">
+                <label className="text-gray-700 dark:text-gray-300 text-sm md:text-base mb-1">
                   Phone
                 </label>
                 <input
@@ -124,14 +160,17 @@ const Contact = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full p-3 border rounded-md dark:bg-gray-900 text-gray-900 dark:text-white"
+                  className={`w-full p-3 border rounded-md dark:bg-gray-900 text-gray-900 dark:text-white ${
+                    errors.phone ? "border-red-500" : ""
+                  }`}
                   placeholder="Your phone number"
                   required
                 />
+                {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
               </div>
 
               <div className="col-span-2 flex flex-col">
-                <label className="w-full text-gray-700 dark:text-gray-300">Message</label>
+                <label className="text-gray-700 dark:text-gray-300">Message</label>
                 <textarea
                   name="message"
                   value={formData.message}

@@ -56,7 +56,7 @@ function Collection() {
         </div>
 
         {/* Display Filtered Items */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div key={selectedCategory} className="mt-12 grid grid-cols-1 md:grid-cols-4 gap-6">
           {decor.length > 0 ? (
             decor.map((item, index) => (
               <motion.div

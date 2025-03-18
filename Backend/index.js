@@ -5,7 +5,6 @@ import path from "path";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 
-
 import decorRoute from "./route/decor.route.js";
 import userRoute from "./route/user.route.js";
 import contactRoute from "./route/contact.route.js";
@@ -19,7 +18,6 @@ app.use(express.json()); // Enable JSON body parsing
 
 const PORT = process.env.PORT || 4000;
 const URI = process.env.MongoDBURI;
-
 
 // connect to mongoDB
 const connectDB = async () => {
